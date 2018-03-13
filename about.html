@@ -1,0 +1,112 @@
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap core CSS -->
+<link href="static/css/bootstrap.css" rel="stylesheet">
+<!--external css-->
+<link href="static/css/external.css" rel="stylesheet" />
+
+<head>
+    <title>About this system</title>
+</head>
+
+<div class="container">
+
+  <header class="masthead">
+
+    <h3 class="text-muted">Style Checking System for language C</h3>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light rounded mb-3">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav text-md-center nav-justified w-100">
+          <li class="nav-item">
+            <a class="nav-link" href="upload">Home
+
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="about">About</a>
+              <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="developer">Developer</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+    <!-- Main Content -->
+    <div class="row">
+        <div class="col-md-3">
+            <h6 class="text-muted">About</h6>
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">About</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+          <main role="main">
+              <h5>How does this website work?</h5>
+              <div class="float-left">After you upload your code, the code will be inspected by a program running on the server. The program will return the result of
+                  checking back to you. After the inspection, your code will be deleted.</div><br>
+              <br></br>
+
+              <h5>But ummmm.. you still do not believe me?</h5>
+              <div class="float-left">To eliminate your concern, the following is the core code for processing your code.</div><br>
+              <br></br>
+              <h6>Code for processing uploaded C source file: webmain.py</h6>
+
+              <codecomment>
+                  # Code for processing POST request <br>
+              </codecomment>
+              <code>
+                  def POST(self): <br>
+                  &emsp;&emsp;x = web.input(myfile={}) <br>
+                  &emsp;&emsp;filedir = 'tmpfile' <br>
+                  &emsp;&emsp;if 'myfile' in x: <br>
+                  &emsp;&emsp;&emsp;&emsp;filepath = x.myfile.filename.replace('\\','/') <br>
+                  &emsp;&emsp;&emsp;&emsp;filename = filepath.split('/')[-1] <br>
+                  &emsp;&emsp;&emsp;&emsp;fout = open(filedir +'/'+ filename,'w') <br>
+                  &emsp;&emsp;&emsp;&emsp;fout.write(x.myfile.file.read()) <br>
+                  &emsp;&emsp;&emsp;&emsp;fout.close() <br>
+              </code>
+              <codecomment>
+                  &emsp; &emsp; # start analyze <br>
+              </codecomment>
+              <code>
+                  &emsp;&emsp;&emsp;&emsp;result = getCFile(filedir + '/' + filename, False) <br>
+                  &emsp;&emsp;&emsp;&emsp;os.system('rm ' + filedir + '/' + filename) <br>
+                  &emsp;&emsp;&emsp;&emsp;print('[file deleted]') <br>
+                  <br>
+                  &emsp;&emsp;&emsp;&emsp;return result <br>
+                  <br>
+                raise web.seeother('/upload')
+              </code>
+              <br>
+
+              <div class="float-left">In the webmain.py, getCFile() function is used to analyze the uploaded C file and then return the result of the inspection.</div><br>
+              <br></br>
+              <br>
+
+              <h5>What kind of style can be checked?</h5>
+              <div class="float-left">For now, it is only for indentation and space check. The website will tell you the style problems in your program. In the future, it might be able to correct the style for you.</div><br>
+          </main>
+        </div>
+    </div>
+
+  <!-- Site footer -->
+  <footer class="footer">
+    <p>&copy; Louis He 2018</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+</div>
+<!-- /container -->
